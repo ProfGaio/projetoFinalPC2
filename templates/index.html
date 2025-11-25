@@ -7,25 +7,39 @@
 </head>
 <body class="bg-light">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">🍔 Cardápio da Hamburgueria</h1>
+        <h1 class="text-center mb-4">🍔 
+            Cardápio da Hamburgueria
+        </h1>
         
         <div class="text-center mb-4">
-            <a href="/adicionar" class="btn btn-success btn-lg">Cadastrar Novo Lanche</a>
+            <a href="/adicionar" 
+                class="btn btn-success btn-lg">
+                Cadastrar Novo Lanche
+            </a>
         </div>
 
         <div class="row">
             <!-- Aqui usamos um laço de repetição do Jinja2 (similar ao Python) -->
-            {% for lanche in itens %}
+            {% for item in itens %}
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ lanche.nome }}</h5>
-                        <h6 class="card-subtitle mb-2 text-success">R$ {{ lanche.preco }}</h6>
+                        <h5 class="card-title">{{ item.nome }}</h5>
+                        <h6 class="card-subtitle mb-2 text-success">
+                            R$ {{ item.preco }}
+                        </h6>
+                        {% if item.tipo_item == "lanche" %}
                         <p class="card-text">
                             <strong>Ingredientes:</strong><br>
                             <!-- Join é um filtro para juntar a lista em texto -->
-                            {{ lanche.ingredientes | join(', ') }}
+                            {{ item.ingredientes | join(', ') }}
                         </p>
+                        {% else %}
+                        <p class="card-text">
+                            <strong>Tamanho (ml):</strong><br>
+                            {{item.tamanho}}
+                        </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
