@@ -28,17 +28,17 @@
                         <h6 class="card-subtitle mb-2 text-success">
                             R$ {{ item.preco }}
                         </h6>
-                        {% if item.tipo_item == "lanche" %}
-                        <p class="card-text">
-                            <strong>Ingredientes:</strong><br>
-                            <!-- Join é um filtro para juntar a lista em texto -->
-                            {{ item.ingredientes | join(', ') }}
-                        </p>
-                        {% else %}
-                        <p class="card-text">
-                            <strong>Tamanho (ml):</strong><br>
-                            {{item.tamanho}}
-                        </p>
+                        {% if item.tipo == "lanche" %}
+                            <p class="card-text">
+                                <strong>Ingredientes:</strong><br>
+                                <!-- Join é um filtro para juntar a lista em texto -->
+                                {{ item.ingredientes | join(', ') }}
+                            </p>
+                        {% elif item.tipo == "bebida" %}
+                            <p class="card-text">
+                                <strong>Tamanho (ml):</strong><br>
+                                {{item.tamanhoMl}}
+                            </p>
                         {% endif %}
                     </div>
                 </div>
